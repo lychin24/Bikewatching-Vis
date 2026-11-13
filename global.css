@@ -1,17 +1,39 @@
+html,
+body {
+  margin: 0;
+}
+
 body {
   font: 100%/1.5 system-ui, sans-serif;
-  display: flex;
-  flex-flow: column;
-  max-width: 80em;
-  min-height: 100vh;
-  box-sizing: border-box;
-  margin: auto;
+  max-width: 100em;
+  margin: 0 auto;
   padding: 1em;
+  box-sizing: border-box;
 }
 
 header {
-    display:flex;
-    gap: 1em;
-    align-items: baseling;
-    margin-left:auto;
+  display: flex;
+  gap: 1em;
+  align-items: baseline;
+  margin-bottom: 1em;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+label {
+  margin-left: auto; /* slider goes to the right side of the header */
+}
+
+label time,
+label em {
+  display: block;
+  text-align: right;
+}
+
+label em {
+  color: gray;
+  font-style: italic;
 }

@@ -1,26 +1,59 @@
-html,
-body {
-  margin: 0;
-  padding: 5;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-}
-
 #map {
-  width: 80%; /* Adjust width to your desired size */
-  height: 80%; /* Adjust height to your desired size */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for effect */
-  border-radius: 8px; /* Optional: rounded corners */
+  width: 100%;
+  height: 70vh;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
 #map svg {
-  position:absolute;
+  position: absolute;
+  inset: 0;
   z-index: 1;
   width: 100%;
   height: 100%;
-  pointer-events: auto;
+  pointer-events: none; /* drags and zooms reach the map */
+}
 
+
+
+#map svg circle,
+.legend > div {
+  --color-departures: steelblue;
+  --color-arrivals: darkorange;
+  --color: color-mix(
+    in oklch,
+    var(--color-departures) calc(100% * var(--departure-ratio, 0.5)),
+    var(--color-arrivals)
+  );
+}
+
+#map svg circle {
+  pointer-events: auto; /* tooltips still work */
+  fill: var(--color);
+  fill-opacity: 0.6;
+  stroke: white;
+  stroke-width: 1;
+}
+
+.legend {
+  display: flex;
+  gap: 1px;               /* just enough to keep the colors from touching */
+  margin-block: 1em;      /* space between the map and legend */
+}
+
+.legend > div {
+  flex: .5;                /* equal-width swatches */
+  padding: 0.5em 2em;     /* more horizontal than vertical padding */
+  background: var(--color);
+  color: white;           /* check contrast against all three colors */
+  text-align: center;
+}
+
+.legend > div:first-child {
+  text-align: center;
+}
+
+.legend > div:last-child {
+  text-align: center;
 }
